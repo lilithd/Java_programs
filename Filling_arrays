@@ -1,0 +1,41 @@
+/*Program written for HackerRank.com. Input provided by HackerRank.*/
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution 
+{
+    static long sum;
+    static int n;
+    static int[] array ;
+    
+    
+    public static void main(String[] args) 
+    {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        
+         Scanner kb = new Scanner(System.in);
+         n = kb.nextInt();  //source automatically included, not read from file. Code from 
+       array = new int [n];
+       for (int j = 0; j < n; j++) 
+         {
+             array[j] = kb.nextInt();
+         }
+        sum = veryBigSum(array);
+        System.out.println(sum);
+        kb.close();
+    }
+    
+    static long veryBigSum(int[] array)
+    {
+        for(int i = 0; i < n; i++)
+        {
+            sum += array[i];
+        } 
+        return sum;
+    }
+    
+}
