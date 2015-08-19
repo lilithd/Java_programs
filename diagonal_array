@@ -1,0 +1,68 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    static int[][] array;
+    static int leftSum;
+    static int rightSum;
+    static int diff;
+    static int n;
+    static int sum1, sum2;
+    
+    
+    public static void main(String[] args) 
+    {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner kb = new Scanner(System.in);
+        n = kb.nextInt();
+        array = new int[n][n];
+        
+        for (int k = 0; k < n; k++)
+        {
+            for (int l = 0; l < n; l++)
+            {
+               array[k][l] = kb.nextInt();
+ 
+            }
+        }
+     
+        sum1 = leftDiagonal(array);
+        sum2 = rightDiagonal(array);
+        diff = difference(sum1, sum2);
+        System.out.println(Math.abs(diff));
+    }
+    
+    public static int leftDiagonal(int[][] array)
+    {
+        for (int row = 0; row < n; row++)
+        {
+              for (int column = row; column <= row; column = column+3)
+              {
+                  leftSum += array[row][column];
+              }
+        }
+        return leftSum;
+    }
+
+        public static int rightDiagonal(int[][] array)
+        {
+        for (int r = 0; r < n; r++)
+        {
+              for (int c = (n - 1 - r); c >= 0; c= c-n)
+              {
+                  rightSum += array[r][c];
+              }
+        }
+        return rightSum;
+        }
+    
+    public static int difference(int sum1, int sum2)
+    {
+        diff = Math.abs(sum1) - Math.abs(sum2);
+        return diff;
+    }
+}
