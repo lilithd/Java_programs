@@ -6,20 +6,21 @@ import java.util.regex.*;
 
 public class Solution {
 
-    static int[][] array;
-    static int leftSum;
-    static int rightSum;
-    static int diff;
-    static int n;
-    static int sum1, sum2;
+
+    
     
     
     public static void main(String[] args) 
     {
         /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
         Scanner kb = new Scanner(System.in);
+        int[][] array;
+        int n=0;
+        int sum1, sum2, diff = 0;
         n = kb.nextInt();
         array = new int[n][n];
+        
+        
         
         for (int k = 0; k < n; k++)
         {
@@ -38,30 +39,34 @@ public class Solution {
     
     public static int leftDiagonal(int[][] array)
     {
-        for (int row = 0; row < n; row++)
+        int leftSum = 0;
+
+        for (int row = 0; row < array.length; row++)
         {
-              for (int column = row; column <= row; column = column+3)
-              {
-                  leftSum += array[row][column];
-              }
+                  leftSum += array[row][row];
         }
         return leftSum;
     }
 
-        public static int rightDiagonal(int[][] array)
-        {
-        for (int r = 0; r < n; r++)
-        {
-              for (int c = (n - 1 - r); c >= 0; c= c-n)
-              {
-                  rightSum += array[r][c];
-              }
-        }
-        return rightSum;
-        }
     
+    public static int rightDiagonal(int[][] array) {
+
+    int rightSum = 0;
+
+ 
+
+    for (int r = 0; r < array.length; r++) {
+
+        rightSum += array[r][array.length - 1 - r];
+
+    }
+
+    return rightSum;
+}
+
     public static int difference(int sum1, int sum2)
     {
+        int diff = 0;
         diff = Math.abs(sum1) - Math.abs(sum2);
         return diff;
     }
